@@ -1,6 +1,5 @@
-
 import { DemoOne } from "@/components/ui/demo";
 
-export default function Home() {
+export default function StarfallPage() {
   return <DemoOne />;
 }

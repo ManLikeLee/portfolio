@@ -1,13 +1,48 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Enable Tailwind dark mode via class strategy */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #eef2ff;
+  --muted-foreground: #9aa6bd;
+  --card-foreground: #f5f8ff;
+  --border: #2c3448;
+  --input: #2c3448;
+  color-scheme: dark;
+}
 
 :root {
+  --font-geist-sans: "Inter";
+  --font-geist-mono: "Menlo";
   --background: #ffffff;
   --foreground: #171717;
+  --muted-foreground: #5b6473;
+  --card-foreground: #0f172a;
+  --border: #dbe2ea;
+  --input: #dbe2ea;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -29,23 +64,138 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+html.dark body {
+  background: #0a0a0a;
+  color: #ededed;
+}
+
 section {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
-  color: #171717;
+  color: var(--foreground);
 }
 
 a {
-  color: #2563eb;
+  color: inherit;
   transition: color 0.2s;
 }
 
 a:hover {
-  color: #1d4ed8;
+  color: inherit;
+}
+
+.geist-font {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.inter-font {
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(115deg, #10b9ff 5%, #1488ff 50%, #3f5dff 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-title {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  color: #edf2ff;
+}
+
+.hero-subtitle {
+  color: #99a5bc;
+  line-height: 1.62;
+}
+
+.section-title {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #eaf0ff;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--border) 85%, white 15%) 50%,
+    transparent 100%
+  );
+}
+
+.glass-button {
+  background: color-mix(in srgb, var(--background) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 90%, white 10%);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-button:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--background) 86%, transparent);
+  border-color: color-mix(in srgb, var(--border) 75%, white 25%);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -14px rgba(37, 99, 235, 0.75);
+  filter: saturate(1.06);
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--background) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 88%, white 12%);
+  box-shadow: 0 10px 40px -28px rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.project-image {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.18),
+    rgba(34, 211, 238, 0.14),
+    rgba(167, 139, 250, 0.14)
+  );
+  overflow: hidden;
+}
+
+.skill-badge {
+  border: 1px solid color-mix(in srgb, var(--border) 88%, white 12%);
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-animation {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .glass-button,
+  .glass-card {
+    backdrop-filter: none;
+  }
 }
