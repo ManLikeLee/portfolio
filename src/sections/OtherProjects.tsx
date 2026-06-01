@@ -10,11 +10,11 @@ const projects = [
     image: "/projects/shopease.png",
   },
   {
-    title: "QuickTasker",
-    description: "Task management MVP for small teams and freelancers.",
-    outcome: "Helped teams organize and deliver projects efficiently.",
-    link: "#",
-    image: "/projects/quicktasker.png",
+    title: "TaskForce",
+    description: "Full-stack task management platform with auth, Kanban workflows, and backend-driven filtering.",
+    outcome: "Built to help teams plan, track, and ship work faster with secure API-backed collaboration.",
+    link: "https://github.com/ManLikeLee/task_manager",
+    image: "/images/taskforce.jpeg",
   },
 ];
 

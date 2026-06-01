@@ -88,12 +88,18 @@ const customPortfolioData: PortfolioPageProps = {
       ),
     },
     {
-      title: 'QuickTasker',
-      description: 'Task management MVP for small teams and freelancers.',
-      outcome: 'Helped teams organize and deliver projects efficiently.',
-      href: '#',
-      tags: ['Productivity', 'MVP', 'SaaS'],
-      imageContent: <Code2 className="h-10 w-10 text-cyan-300" />,
+      title: 'TaskForce',
+      description: 'Full-stack task management platform with auth, Kanban workflows, and backend-driven filtering.',
+      outcome: 'Delivered a production-ready team workspace with secure sessions, drag-and-drop task flow, and scalable APIs.',
+      href: 'https://github.com/ManLikeLee/task_manager',
+      tags: ['React', 'TypeScript', 'Vite', 'Express', 'Prisma', 'PostgreSQL'],
+      imageContent: (
+        <img
+          src="/images/taskforce.jpeg"
+          alt="TaskForce project preview"
+          className="h-full w-full rounded-xl object-cover"
+        />
+      ),
     },
   ],
   processSteps: [

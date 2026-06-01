@@ -43,6 +43,26 @@ const projects = [
     ],
     tech: ["Next.js", "Tailwind CSS", "JavaScript"],
   },
+  {
+    name: "TaskForce",
+    liveUrl: "https://github.com/ManLikeLee/task_manager",
+    codeUrl: "https://github.com/ManLikeLee/task_manager",
+    image: "/images/taskforce.jpeg",
+    description:
+      "A full-stack task management platform with secure auth, Kanban workflows, and backend-driven filtering and sorting.",
+    features: [
+      "Kanban board with drag-and-drop task flow",
+      "JWT auth with refresh cookie rotation",
+      "Task filters, sorting, and search",
+      "Task detail drawer and create-task modal",
+    ],
+    focus: [
+      "Team workflow clarity",
+      "Scalable API architecture",
+      "Responsive, modern product UX",
+    ],
+    tech: ["React", "TypeScript", "Vite", "Express", "Prisma", "PostgreSQL"],
+  },
 ];
 
 export default function ProjectsSection() {
