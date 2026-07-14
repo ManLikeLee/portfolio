@@ -45,6 +45,26 @@ html.dark {
   --color-input: var(--input);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Portfolio rebuild tokens (kept in this single @theme block —
+     Tailwind v4 + Turbopack silently drops everything after a
+     second @theme rule in the same file). */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-2: var(--accent-blue-2);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-2: var(--accent-purple-2);
+  --color-cta-blue: var(--cta-blue);
+  --color-cta-purple: var(--cta-purple);
+  --font-body: var(--font-inter);
+  --font-display: var(--font-manrope);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -197,5 +217,211 @@ a:hover {
   .glass-button,
   .glass-card {
     backdrop-filter: none;
+  }
+}
+
+/* ==========================================================================
+   Portfolio rebuild — new design tokens & utilities.
+   Additive only: nothing above this line is modified, so the existing
+   /starfall route and its components keep rendering exactly as before.
+   ========================================================================== */
+
+:root {
+  --canvas: #050608;
+  --surface: #0b0d12;
+  --surface-2: #12151c;
+  --surface-3: #191d26;
+  --ink: #f4f6fb;
+  --ink-muted: #8b93a7;
+  --hairline: #232733;
+  --hairline-strong: #2f3444;
+  --accent-blue: #3b82f6;
+  --accent-blue-2: #60a5fa;
+  --accent-purple: #8b5cf6;
+  --accent-purple-2: #a78bfa;
+  /* Darker than --accent-blue/--accent-purple specifically so white button
+     text clears WCAG AA (4.5:1) — the lighter tokens are for decorative
+     gradients/badges where no text sits directly on top of them. */
+  --cta-blue: #2563eb;
+  --cta-purple: #7c3aed;
+}
+
+.site {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+/* Keep anchor targets clear of the sticky nav */
+.site [id] {
+  scroll-margin-top: 6rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site {
+    scroll-behavior: smooth;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.site :focus-visible {
+  outline: 2px solid var(--accent-blue-2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.site-title {
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.hero-title-fluid {
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+}
+
+.card-interactive {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--hairline-strong);
+  box-shadow: 0 24px 60px -32px rgba(59, 130, 246, 0.35);
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.ambient-blob-1 {
+  top: -10%;
+  left: 5%;
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+  opacity: 0.35;
+  animation: drift-1 26s ease-in-out infinite;
+}
+
+.ambient-blob-2 {
+  top: 10%;
+  right: 0%;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+  opacity: 0.3;
+  animation: drift-2 30s ease-in-out infinite;
+}
+
+.ambient-blob-3 {
+  bottom: -15%;
+  left: 30%;
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, var(--accent-blue-2) 0%, transparent 70%);
+  opacity: 0.2;
+  animation: drift-3 22s ease-in-out infinite;
+}
+
+@keyframes drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 6%) scale(1.08); }
+}
+
+@keyframes drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5%, 4%) scale(1.05); }
+}
+
+@keyframes drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, -5%) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob {
+    animation: none;
+  }
+}
+
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.25rem;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.animated-underline:hover::after,
+.animated-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #4ade80;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #4ade80;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot::after {
+    animation: none;
+    opacity: 0;
   }
 }
