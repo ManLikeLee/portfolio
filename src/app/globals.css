@@ -302,7 +302,7 @@ a:hover {
   line-height: 1.03;
   letter-spacing: -0.035em;
   text-wrap: balance;
-  font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+  font-size: clamp(2.25rem, 4.5vw + 0.75rem, 5rem);
 }
 
 .card-interactive {

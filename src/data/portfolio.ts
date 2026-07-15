@@ -63,6 +63,13 @@ export const site = {
   url: "https://my-portfolio-philip-uguru.vercel.app",
 };
 
+export const portrait = {
+  src: "/PHILIP UK  SOFT  (4).JPG",
+  alt: "Portrait of Philip Uguru",
+  width: 2192,
+  height: 2818,
+};
+
 export const navLinks: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "Work", href: "#work" },
