@@ -89,7 +89,7 @@ html.dark body {
   color: #ededed;
 }
 
-section {
+section:not(.site *) {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
