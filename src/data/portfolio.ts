@@ -79,7 +79,7 @@ export const navLinks: NavLink[] = [
 ];
 
 export const cvFile = {
-  href: "/Philip_Uguru_ATS_CV%20(1).pdf",
+  href: "/Philip%20Uguru%20CV.pdf",
   downloadName: "Philip-Uguru-CV.pdf",
 };
 
